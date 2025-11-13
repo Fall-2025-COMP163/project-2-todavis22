@@ -58,7 +58,7 @@ class Character:
     Base class for all characters.
     This is the top of our inheritance hierarchy.
     """
-    
+    # Stores name health strength andf magic inside the character class
     def __init__(self, name, health, strength, magic):
         """Initialize basic character attributes"""
         self.name = name
@@ -77,6 +77,8 @@ class Character:
         2. Apply damage to the target
         3. Print what happened
         """
+        # makes damage = to the stength of the characer and calls the take_damage function
+        # and applies the damage to the target
         damage = self.strength
         target.take_damage(damage)
         print(f"{self.name} starts attacking {target.name} and does {damage} to him")
@@ -90,7 +92,8 @@ class Character:
         Reduces this character's health by the damage amount.
         Health should never go below 0.
         """
-        
+        # this makes health go down by the character amount of damage took
+        # it also has a if statement tom make sure it dosent go below 0
         self.health -= damage
         if self.health < 0:
             self.health = 0
@@ -120,6 +123,9 @@ class Player(Character):
         Initialize a player character.
         Should call the parent constructor and add player-specific attributes.
         """
+        # calls the character class and uses all of its attribute name health strength etc
+        #also adds some of its own attributes like characterclass and it also intiallize
+        # experience and zeni as a place holder in the function
         super().__init__(name, health, strength, magic)
         self.character_class = character_class
         self.level = 1
@@ -135,6 +141,8 @@ class Player(Character):
         Override the parent's display_stats to show additional player info.
         Should show everything the parent shows PLUS player-specific info.
         """
+        #this calls the character classs stuff and display them plus the player clas
+        #attriubute
         super().display_stats()
         print(f"character Level: {self.level} and class is {self.character_class}")
         print(f"Character Experience {self.experience}")
@@ -148,7 +156,7 @@ class Warrior(Player):
     Warrior class - strong physical fighter.
     Inherits from Player.
     """
-    
+    # calls the player class and fills in the parameters with values
     def __init__(self, name):
         """
         Create a warrior with appropriate stats.
@@ -165,9 +173,11 @@ class Warrior(Player):
         Override the basic attack to make it warrior-specific.
         Warriors should do extra physical damage.
         """
+        # this adds damage specfic to the warrior clas since hes a melee base class
+        # he dose a extra 5 damage
         damage = self.strength + 5
         target.take_damage(damage)
-        print(f"{self.name} slashes {target.name} for {damage} damage!")
+        print(f"{self.name} slashes him hard {target.name} for {damage} damage!")
         # TODO: Implement warrior attack
         # Should do more damage than basic attack
         # Maybe strength + 5 bonus damage?
@@ -177,9 +187,10 @@ class Warrior(Player):
         """
         Special warrior ability - a powerful attack that does extra damage.
         """
+        #has a powerful move called power strike that does an extra +20 damage
         damage = self.strength + 20
         target.take_damage(damage)
-        print(f"{self.name} uses Power Strike on {target.name} for {damage} damage!")
+        print(f"{self.name} uses a Power Strike on {target.name} for {damage} damage!")
         # TODO: Implement power strike
         # Should do significantly more damage than regular attack
         
@@ -195,6 +206,7 @@ class Mage(Player):
         Create a mage with appropriate stats.
         Mages should have: low health, low strength, high magic
         """
+        # calls parenet class and fills in the value
         super().__init__(name, "Mage", 80, 8, 20)
         
         # TODO: Call super().__init__() with mage-appropriate stats
@@ -206,9 +218,10 @@ class Mage(Player):
         Override the basic attack to make it magic-based.
         Mages should use magic for damage instead of strength.
         """
+        #this changes the damge froim strength to magic and applies it to the target 
         damage = self.magic
         target.take_damage(damage)
-        print(f"{self.name} casts a spell on {target.name} for {damage} damage!")
+        print(f"{self.name} casts a strong spell on {target.name} for {damage} damage!")
 
 
         # TODO: Implement mage attack
@@ -219,6 +232,7 @@ class Mage(Player):
         """
         Special mage ability - a powerful magical attack.
         """
+        # A special move called fireball that applies magic times 2
         damage = self.magic * 2
         target.take_damage(damage)
         print(f"{self.name} casts Fireball on {target.name} for {damage} damage!")
@@ -233,7 +247,7 @@ class Rogue(Player):
     Inherits from Player.
     """
     
-
+    # calls the parent class player and adds the cahracter name and attributes
     def __init__(self, name):
         """
         Create a rogue with appropriate stats.
@@ -250,6 +264,8 @@ class Rogue(Player):
         Override the basic attack to make it rogue-specific.
         Rogues should have a chance for extra damage (critical hits).
         """
+        # This gives a 30 % chance and give a 3 times bonus and if it dosent hit 
+        # damage juist stays the same
         if random.randint(1,10) <= 3:
             damage = self.strength * 3
         else:
@@ -266,6 +282,8 @@ class Rogue(Player):
         """
         Special rogue ability - guaranteed critical hit.
         """
+        # guranteed if this sneak attack move is execute damage is multiplied by 3
+
         damage =  self.strength * 3
         target.take_damage(damage)
         print(f"{self.name} performs Sneak Attack on {target.name} for {damage} damage!")
