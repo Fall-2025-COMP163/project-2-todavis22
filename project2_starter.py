@@ -167,6 +167,7 @@ class Warrior(Player):
         """
         damage = self.strength + 5
         target.take_damage(damage)
+        print(f"{self.name} slashes {target.name} for {damage} damage!")
         # TODO: Implement warrior attack
         # Should do more damage than basic attack
         # Maybe strength + 5 bonus damage?
@@ -219,6 +220,7 @@ class Mage(Player):
         """
         damage = self.magic + 5
         target.take_damage(damage)
+        print(f"{self.name} throw a fireball at {target.name} for {damage} damage!")
         # TODO: Implement fireball spell
         # Should do magic-based damage with bonus
         
@@ -249,7 +251,11 @@ class Rogue(Player):
         """
         if random.randint(1,10) <= 3:
             damage = self.strength * 2
-            
+        else:
+            damage = self.strength
+
+        target.take_damage(damage)
+        print(f"{self.name} attacks him hard {target.name} for {damage} damage!")
         # TODO: Implement rogue attack
         # Could add a chance for critical hit (double damage)
         # Hint: use random.randint(1, 10) and if result <= 3, it's a crit
@@ -299,7 +305,7 @@ if __name__ == "__main__":
     print("=" * 50)
     
     # TODO: Create one of each character type
-    
+
     warrior = Warrior("Sir Galahad")
     mage = Mage("Merlin")
     rogue = Rogue("Robin Hood")
