@@ -177,7 +177,7 @@ class Warrior(Player):
         """
         Special warrior ability - a powerful attack that does extra damage.
         """
-        damage = self.strength + 40
+        damage = self.strength + 20
         target.take_damage(damage)
         print(f"{self.name} does a really powerful attack on {target.name} for {damage} damage!")
         # TODO: Implement power strike
@@ -219,7 +219,7 @@ class Mage(Player):
         """
         Special mage ability - a powerful magical attack.
         """
-        damage = self.magic + 5
+        damage = self.magic * 2
         target.take_damage(damage)
         print(f"{self.name} cast a fireball at {target.name} for {damage} damage!")
         # TODO: Implement fireball spell
@@ -251,7 +251,7 @@ class Rogue(Player):
         Rogues should have a chance for extra damage (critical hits).
         """
         if random.randint(1,10) <= 3:
-            damage = self.strength * 2
+            damage = self.strength * 3
         else:
             damage = self.strength
 
