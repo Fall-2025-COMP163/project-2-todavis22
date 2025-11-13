@@ -179,7 +179,7 @@ class Warrior(Player):
         """
         damage = self.strength + 20
         target.take_damage(damage)
-        print(f"{self.name} does a really powerful attack on {target.name} for {damage} damage!")
+        print(f"{self.name} uses Power Strike on {target.name} for {damage} damage!")
         # TODO: Implement power strike
         # Should do significantly more damage than regular attack
         
@@ -221,7 +221,7 @@ class Mage(Player):
         """
         damage = self.magic * 2
         target.take_damage(damage)
-        print(f"{self.name} cast a fireball at {target.name} for {damage} damage!")
+        print(f"{self.name} casts Fireball on {target.name} for {damage} damage!")
         # TODO: Implement fireball spell
         # Should do magic-based damage with bonus
         
@@ -268,7 +268,7 @@ class Rogue(Player):
         """
         damage =  self.strength * 2
         target.take_damage(damage)
-        print(f"{self.name} does a very powerful sneak attack on {target.name} for {damage} damage!")
+        print(f"{self.name} performs Sneak Attack on {target.name} for {damage} damage!")
         # TODO: Implement sneak attack
         # Should always do critical damage
         
