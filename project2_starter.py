@@ -266,7 +266,7 @@ class Rogue(Player):
         """
         Special rogue ability - guaranteed critical hit.
         """
-        damage =  self.strength * 2
+        damage =  self.strength * 3
         target.take_damage(damage)
         print(f"{self.name} performs Sneak Attack on {target.name} for {damage} damage!")
         # TODO: Implement sneak attack
